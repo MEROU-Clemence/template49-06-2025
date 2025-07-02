@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="{{CurrentLang.IsoLang}}" culture="{{CurrentLang.CultureLang}}">
+<head>
+    <title>{{CustomTitle}} - {{City}} - {{Country}}</title>
+    <meta name="description" content="{{Descriptions.0.DescLength150}}">
+    {{>CommonMetaTags}}
+    <link rel="canonical" href="{{UrlRoot}}" />
+    <meta property="og:url" content="{{UrlRoot}}" />
+    <meta property="og:title" content="{{CustomTitle}}" />
+    <meta property="og:image" content="{{#Photos.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}" />
+    <meta property="og:description" content="{{Descriptions.0.DescLength150}}" />
+    {{>FaviconTags}}
+    {{>CommonStylesheets}}
+    <link rel="stylesheet" href="https://static.elloha.com/webgen/css/newcookieconsent.css">
+    {{#HasBookingActivated}}{{>ScriptCalendarClick}}{{/HasBookingActivated}}
+</head>
+<body>
+    {{{ScriptAnalytics}}}
+    {{{GoogleTagManagerBody}}}
+    {{>Header}}
+
+    <main>
+        <section class="section-widget-and-presentation">
+            <!-- SECTION WIDGET BE -->
+            <div class="section-widget bg-img" style="background-image: url({{#Photos.0}}{{UrlMedias}}/crop-1000x1000/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}});" draggable="false">
+                <div class="opacity">
+
+                    <div class="bloc-title-header demi-content-section-left">
+                        <h1>{{CustomTitle}}</h1>
+
+                        <span>{{CustomTypeOi}}</span>
+                    </div>
+
+                    {{#HasBookingActivated}}
+                    <div id="section-BE" class="section-BE-home demi-content-section-left">
+                        <div class="check-availability">
+                            <div class="rounded-box">
+                                {{>Widget-BE}}
+                                {{>Widget-BE-secure}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/HasBookingActivated}}
+
+                </div>
+            </div>
+
+            <!-- SECTION PRESENTATION -->
+            <div id="section-presentation" class="section section-presentation">
+                <div class="title-and-avatar demi-content-section-right">
+                    <div class="title-presentation-bloc">
+                        <span class="name-user">{{NameUser}}</span>
+
+                        <h2>{{CustomTitle}}</h2>
+                    </div>
+
+                    {{#HasAvatar}}
+                    <div class="avatar bg-img" style="background-image: url({{PhotoUserUrl}});" alt="{{NamePhoto}}-avatar"></div>
+                    {{/HasAvatar}}
+                </div>
+
+                <div class="description-contain demi-content-section-right">
+                    <div class="description">{{{Descriptions.0.LibelleDescHtml}}}</div>
+
+                    <div id="seeMore2" class="more-less-btn-contain">
+                        <a href="#" class="more-less-btn">{{ResourcesTemplate.ReadMore2}}</a>
+                    </div>
+                    <div id="seeLess2" class="more-less-btn-contain">
+                        <a href="#" class="more-less-btn">{{ResourcesTemplate.ReadLess2}}</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-infos-and-gallery">
+            <div class="section section-infos-home">
+                <div class="infos-scea-and-resa demi-content-section-left">
+                    <!-- SECTION INFOS -->
+                    <div class="title-price-and-infos">
+                        <div class="title-and-price">
+                            <h2>{{ResourcesTemplate.Offers_All_3_Singular}}</h2>
+
+                            {{#Prestations.0.MinPricePresta}}
+                            <div class="price-presta-from">
+                                <span class="price-from">{{ResourcesTemplate.PriceFrom}}</span>
+                                <span class="price-price">{{Prestations.0.MinPricePresta}}{{CurrencySymbol}}/{{ResourcesTemplate.Night}}</span>
+                            </div>
+                            {{/Prestations.0.MinPricePresta}}
+                        </div>
+
+                        <div class="infos-content">
+                            {{#Prestations.0.MaxCapacityPresta}}
+                            <div class="infos-and-picto">
+                                <em class="icon-post-padding las la-user"></em>
+                                <div class="infos-presta">
+                                    <span>{{ResourcesTemplate.MaxCapacity}} <strong>{{Prestations.0.MaxCapacityPresta}} {{ResourcesTemplate.CapacityPersons}}</strong></span>
+                                </div>
+                            </div>
+                            {{/Prestations.0.MaxCapacityPresta}}
+
+                            {{#Prestations.0.CheckinTime}}
+                            <div class="infos-and-picto">
+                                <em class="icon-post-padding las la-clock"></em>
+                                <div class="infos-presta">
+                                    <span>{{ResourcesTemplate.CheckinTime}}: <strong>{{Prestations.0.CheckinTimeString}}</strong></span>
+                                </div>
+                            </div>
+                            {{/Prestations.0.CheckinTime}}
+
+                            {{#Prestations.0.CheckoutTime}}
+                            <div class="infos-and-picto">
+                                <em class="icon-post-padding las la-clock"></em>
+                                <div class="infos-presta">
+                                    <span>{{ResourcesTemplate.CheckoutTime}}: <strong>{{Prestations.0.CheckoutTimeString}}</strong></span>
+                                </div>
+                            </div>
+                            {{/Prestations.0.CheckoutTime}}
+
+                            {{#Prestations.0.NbSimpleBeds}}
+                            <div class="infos-and-picto">
+                                <em class="icon-post-padding las la-bed"></em>
+                                <div class="infos-presta">
+                                    <span>{{ResourcesTemplate.SimpleBeds}} <strong>{{Prestations.0.NbSimpleBeds}}</strong></span>
+                                </div>
+                            </div>
+                            {{/Prestations.0.NbSimpleBeds}}
+
+                            {{#Prestations.0.NbDoubleBeds}}
+                            <div class="infos-and-picto">
+                                <em class="icon-post-padding las la-bed"></em>
+                                <div class="infos-presta">
+                                    <span>{{ResourcesTemplate.DoubleBeds}} <strong>{{Prestations.0.NbDoubleBeds}}</strong></span>
+                                </div>
+                            </div>
+                            {{/Prestations.0.NbDoubleBeds}}
+
+                            {{#Prestations.0.NbKingBeds}}
+                            <div class="infos-and-picto">
+                                <em class="icon-post-padding las la-bed"></em>
+                                <div class="infos-presta">
+                                    <span>{{ResourcesTemplate.KingBeds}} <strong>{{Prestations.0.NbKingBeds}}</strong></span>
+                                </div>
+                            </div>
+                            {{/Prestations.0.NbKingBeds}}
+
+                            {{#Prestations.0.NbQueenBeds}}
+                            <div class="infos-and-picto">
+                                <em class="icon-post-padding las la-bed"></em>
+                                <div class="infos-presta">
+                                    <span>{{ResourcesTemplate.QueenBeds}} <strong>{{Prestations.0.NbQueenBeds}}</strong></span>
+                                </div>
+                            </div>
+                            {{/Prestations.0.NbQueenBeds}}
+
+                            {{#Prestations.0.NbBunkBeds}}
+                            <div class="infos-and-picto">
+                                <em class="icon-post-padding las la-bed"></em>
+                                <div class="infos-presta">
+                                    <span>{{ResourcesTemplate.BunkBeds}} <strong>{{Prestations.0.NbBunkBeds}}</strong></span>
+                                </div>
+                            </div>
+                            {{/Prestations.0.NbBunkBeds}}
+
+                            {{#Prestations.0.NbSofaBeds}}
+                            <div class="infos-and-picto">
+                                <em class="icon-post-padding las la-bed"></em>
+                                <div class="infos-presta">
+                                    <span>{{ResourcesTemplate.SofaBeds}} <strong>{{Prestations.0.NbSofaBeds}}</strong></span>
+                                </div>
+                            </div>
+                            {{/Prestations.0.NbSofaBeds}}
+
+                            {{#Prestations.0.NbSofaDoubleBeds}}
+                            <div class="infos-and-picto">
+                                <em class="icon-post-padding las la-bed"></em>
+                                <div class="infos-presta">
+                                    <span>{{ResourcesTemplate.SofaDoubleBeds}} <strong>{{Prestations.0.NbSofaDoubleBeds}}</strong></span>
+                                </div>
+                            </div>
+                            {{/Prestations.0.NbSofaDoubleBeds}}
+
+                            {{#Prestations.0.NbMurphyBeds}}
+                            <div class="infos-and-picto">
+                                <em class="icon-post-padding las la-bed"></em>
+                                <div class="infos-presta">
+                                    <span>{{ResourcesTemplate.MurphyBeds}} <strong>{{Prestations.0.NbMurphyBeds}}</strong></span>
+                                </div>
+                            </div>
+                            {{/Prestations.0.NbMurphyBeds}}
+
+                            {{#Prestations.0.HasExtraBeds}}
+                            <div class="infos-and-picto">
+                                <em class="icon-post-padding las la-bed"></em>
+                                <div class="infos-presta">
+                                    <span>{{ResourcesTemplate.ExtraBeds}} <strong>{{ResourcesTemplate.Yes}}</strong></span>
+                                </div>
+                            </div>
+                            {{/Prestations.0.HasExtraBeds}}
+
+                            {{#CurrentPrestation.HasBabyBeds}}
+                            <div class="infos-and-picto">
+                                <em class="icon-post-padding las la-bed"></em>
+                                <div class="infos-presta">
+                                    <span>{{ResourcesTemplate.BabyBeds}} <strong>{{ResourcesTemplate.Yes}}</strong></span>
+                                </div>
+                            </div>
+                            {{/CurrentPrestation.HasBabyBeds}}
+                        </div>
+                    </div>
+
+                    <!-- SECTION SCEA -->
+                    {{#HasSCEA}}
+                    <div class="section-scea">
+                        <div class="title-scea">
+                            <span>{{ResourcesTemplate.Services}}</span>
+
+                            <h2>{{ResourcesTemplate.DesignedForYourComfort}}</h2>
+                        </div>
+
+                        <div class="options-scea-contain">
+                            {{#SCEA}}
+                            <div class="options-scea">{{LibelleService}}</div>
+                            {{/SCEA}}
+                        </div>
+
+                        <div id="seeMore1" class="more-less-btn-contain">
+                            <a href="#" class="more-less-btn">{{ResourcesTemplate.SeeMore}}</a>
+                        </div>
+                        <div id="seeLess1" class="more-less-btn-contain">
+                            <a href="#" class="more-less-btn">{{ResourcesTemplate.SeeLess}}</a>
+                        </div>
+                    </div>
+                    {{/HasSCEA}}
+
+                    {{#HasBookingActivated}}
+                    <div class="btn-contain">
+                        <a class="btn" href="{{{UrlBECustom}}}/Search/Index/{{IdPubBe}}?idoi={{IdOi}}&searchFirstAvailableDates=1&culture={{CurrentLang.CultureLang}}&forcedTemplate={{UrlTemplateBE}}" itemprop="url">
+                            {{ResourcesTemplate.Book}}
+                        </a>
+                    </div>
+                    {{/HasBookingActivated}}
+                </div>
+            </div>
+
+            <!-- SECTION GALERIE -->
+            <div class="section-gallery">
+                <div class="owl-carousel owl-theme slider-gallery">
+                    {{#Photos}}
+                    <img src="{{UrlMedias}}/crop-2600x2200/{{IdMedia}}/{{FileNamePhoto}}" alt="{{NamePhoto}}-galerie" />
+                    {{/Photos}}
+                </div>
+            </div>
+        </section>
+
+        {{#HasOptions}}
+        <!-- SECTION OPTIONS -->
+        <section id="section-options" class="section-options">
+            <div class="options-contain">
+                <div class="title-with-sub title-options-contain">
+                    <span class="content-section">{{ResourcesTemplate.Options}}</span>
+
+                    <h2 class="content-section">{{ResourcesTemplate.OurLittleExtras}} !</h2>
+                </div>
+
+                <div class="owl-carousel owl-theme slider-options">
+                    {{#Options}}
+                    <a href="{{{UrlBECustom}}}/Search/Index/{{IdPubBe}}?idoi={{IdOi}}&searchFirstAvailableDates=1&culture={{CurrentLang.CultureLang}}&forcedTemplate={{UrlTemplateBE}}" itemprop="url" class="presta-contain presta-contain-options">
+                        {{#MinPricePresta}}
+                        <div class="saw-prices">
+                            <strong class="price">{{ResourcesTemplate.PriceFrom}} {{MinPricePresta}}{{CurrencySymbol}}</strong>
+                        </div>
+                        {{/MinPricePresta}}
+
+                        <img src="{{#PhotosPresta.0}}{{UrlMedias}}/crop-700x500/{{IdMedia}}/{{FileNamePhoto}}{{/PhotosPresta.0}}" alt="{{NamePhoto}}-option" />
+
+                        <div class="infos-contain">
+                            <h3>{{TitrePresta}}</h3>
+
+                            <div class="description-option">{{{DescriptionPresta}}}</div>
+                        </div>
+                    </a>
+                    {{/Options}}
+                </div>
+            </div>
+        </section>
+        {{/HasOptions}}
+
+        {{#HasHomeVideoActivated}}
+        <!-- SECTION VIDEO -->
+        <section class="section-video-home">
+            <div class="video-home video-wrap">
+                <div id="player"></div>
+                <input type="hidden" value="{{HomeVideoId}}" id="YoutubeVideoId" />
+            </div>
+        </section>
+        {{/HasHomeVideoActivated}}
+
+        {{#Prestations.0.HasSpecialOffersPresta}}
+        <!-- SECTION OFFRES SPECIALES -->
+        <section id="section-special-offers" class="section-options section-special-offers">
+            <div class="options-contain">
+                <div class="title-with-sub title-options-contain">
+                    <span class="tiers-plus-content-section-left">{{ResourcesTemplate.pageMenuTitle_special-offers}}</span>
+
+                    <h2 class="tiers-plus-content-section-left">{{ResourcesTemplate.OurLittleExtras}} !</h2>
+                </div>
+
+                <div class="owl-carousel owl-theme slider-special-offers">
+                    {{#Prestations.0.SpecialOffersPresta}}
+                    <a href="{{{UrlBECustom}}}/Search/Index/{{IdPubBe}}?idoi={{IdOi}}&searchFirstAvailableDates=1&culture={{CurrentLang.CultureLang}}&forcedTemplate={{UrlTemplateBE}}" itemprop="url" class="presta-contain presta-contain-options">
+
+                        {{#AmountPromo}}
+                        <div class="saw-prices">
+                            <strong class="offer-promo">{{SignPromo}}{{AmountPromo}}{{UnitPromo}}</strong>
+                        </div>
+                        {{/AmountPromo}}
+
+                        <div class="bg-img" style="background-image: url({{#FirstPhotoSpecialOffer}}{{UrlMedias}}/crop-700x500/{{IdMedia}}/{{FileNamePhoto}}{{/FirstPhotoSpecialOffer}}{{^FirstPhotoSpecialOffer}}https://static.elloha.com/webgen/img/special-offer.png{{/FirstPhotoSpecialOffer}}); " alt="{{NamePhoto}}-special-offer">
+                            <div class="opacity-2">
+
+                                <div class="infos-contain-special-offers">
+                                    <h3>{{TitleSpecialOffer}}</h3>
+
+                                    <div class="special-offers-date">
+                                        {{^IsEarlyBirdOrLastMinute}}
+                                        {{#DateFromSpecialOfferString}}
+                                        <div class="duration-special-offer">
+                                            <span class="price-from">{{ResourcesTemplate.DateFrom}}</span>
+                                            <span class="price-from">{{DateFromSpecialOfferString}}</span>
+                                            <span class="price-from">{{ResourcesTemplate.DateTo}} </span>
+                                        </div>
+                                        {{/DateFromSpecialOfferString}}
+
+                                        <div class="duration-special-offer">
+                                            {{^DateFromSpecialOfferString}}
+                                            {{#DateToSpecialOfferString}}
+                                            <span class="price-from">{{ResourcesTemplate.DateUntil}}</span>
+                                            {{/DateToSpecialOfferString}}
+                                            {{/DateFromSpecialOfferString}}
+
+                                            {{#DateToSpecialOfferString}}
+                                            <span class="price-from">{{DateToSpecialOfferString}}</span>
+                                            {{/DateToSpecialOfferString}}
+                                        </div>
+
+                                        <div class="duration-special-offer">{{DeadlineStringSpecialOffer}}</div>
+                                        {{/IsEarlyBirdOrLastMinute}}
+                                        {{#LastMinute}}
+                                        <div class="duration-special-offer">
+                                            <span class="price-from">{{ResourcesTemplate.RightNow}}</span>
+                                        </div>
+                                        {{/LastMinute}}
+                                        {{#EarlyBird}}
+                                        <div class="duration-special-offer">
+                                            <span class="price-from">{{ResourcesTemplate.BookEarly}}</span>
+                                        </div>
+                                        {{/EarlyBird}}
+                                        {{#MinStayStringSpecialOffer}}
+                                        <div class="duration-special-offer">{{MinStayStringSpecialOffer}}</div>
+                                        {{/MinStayStringSpecialOffer}}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </a>
+                    {{/Prestations.0.SpecialOffersPresta}}
+                </div>
+            </div>
+        </section>
+        {{/Prestations.0.HasSpecialOffersPresta}}
+
+        {{#HasBookingActivated}}
+        {{#HasGiftsActivated}}
+        <!-- SECTION GIFTS -->
+        <section id="section-gifts" class="section-gifts">
+            <div class="img-and-vouchers">
+                <div class="img-gift-contain">
+                    <img src="https://static.elloha.com/webgen/img/giftcard.jpg" alt="{{NamePhoto}}-gifts" />
+                </div>
+
+                {{#HasGiftVouchersActivated}}
+                <div class="giftvouchers-section">
+                    <div class="giftvouchers-contain demi-content-section-right">
+                        <div class="title-with-sub">
+                            <span>{{ResourcesTemplate.GiftVouchers}}</span>
+
+                            <h2>{{ResourcesTemplate.TreatYourFriends}}</h2>
+                        </div>
+
+                        <div class="all-prices-vouchers">
+                            {{#GiftVouchers}}
+                            <a id="#voucher-{{Id}}" href="#voucher-{{Id}}" class="voucher-link">{{AmountGiftVoucher}} {{CurrencySymbol}}</a>
+                            {{/GiftVouchers}}
+                        </div>
+
+                        <div class="owl-carousel owl-theme vouchers-slider">
+                            {{#GiftVouchers}}
+                            <div id="voucher-{{Id}}" class="giftcards-contain giftcard-index">
+                                <div class="title-and-infos-voucher">
+                                    <span class="title-voucher">{{ResourcesTemplate.GiftVoucherPriceFrom}} {{AmountGiftVoucher}}{{CurrencySymbol}}</span>
+
+                                    <div class="infos-voucher">
+                                        <div class="date-from-to">
+                                            {{#DurationGiftVoucher}}
+                                            <div class="group-date-os">
+                                                <span class="date-os">{{ResourcesTemplate.Valid}}</span>
+                                                <span class="date-os">{{DurationGiftVoucher}} {{ResourcesTemplate.month}}</span>
+                                            </div>
+                                            {{/DurationGiftVoucher}}
+
+                                            {{^DurationGiftVoucher}}
+
+                                            {{#DateFromGiftVoucherString}}
+                                            <div class="group-date-os">
+                                                <span class="date-os">{{ResourcesTemplate.Valid}}</span>
+                                                <span class="date-os lowercase">{{ResourcesTemplate.DateFrom}}</span>
+                                                <span class="date-os">{{DateFromGiftVoucherString}}</span>
+                                                <span class="date-os">{{ResourcesTemplate.DateTo}}</span>
+                                                <span class="date-os">{{DateToGiftVoucherString}}</span>
+                                            </div>
+                                            {{/DateFromGiftVoucherString}}
+
+                                            {{^DateFromGiftVoucherString}}
+                                            <div class="group-date-os">
+                                                {{#DateToGiftVoucherString}}
+                                                <span class="date-os">{{ResourcesTemplate.Valid}}</span>
+                                                <span class="date-os lowercase">{{ResourcesTemplate.DateUntil}}</span>
+                                                {{/DateToGiftVoucherString}}
+
+                                                {{#DateToGiftVoucherString}}
+                                                <span class="date-os">{{DateToGiftVoucherString}}</span>
+                                                {{/DateToGiftVoucherString}}
+                                            </div>
+                                            {{/DateFromGiftVoucherString}}
+
+                                            {{/DurationGiftVoucher}}
+                                        </div>
+
+                                        {{#DescriptionGiftVoucher}}
+                                        <div class="description-giftvoucher">{{DescriptionGiftVoucher}}</div>
+                                        {{/DescriptionGiftVoucher}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{/GiftVouchers}}
+                        </div>
+                    </div>
+                </div>
+                {{/HasGiftVouchersActivated}}
+            </div>
+
+            {{#HasGiftCardsActivated}}
+            <div class="giftcards-section">
+                <div class="giftcards-contain">
+                    <div class="title-with-sub title-options-contain">
+                        <span class="tiers-plus-content-section-left">{{ResourcesTemplate.Giftcards}}</span>
+
+                        <h2 class="tiers-plus-content-section-left">{{ResourcesTemplate.GiftWantToOffer}}</h2>
+                    </div>
+
+                    <div class="owl-carousel owl-theme slider-giftcards">
+                        {{#GiftCards}}
+                        <a href="{{{UrlBECustom}}}/Search/Index/{{IdPubBe}}?idoi={{IdOi}}&searchFirstAvailableDates=1&culture={{CurrentLang.CultureLang}}&forcedTemplate={{UrlTemplateBE}}" itemprop="url" class="giftcard-bloc">
+                            <div class="price-and-img-gift">
+                                <div class="hover-bg-choose">{{ResourcesTemplate.Choose}}</div>
+
+                                <span class="price-gift">{{ResourcesTemplate.ValueOf}} {{AmountGiftCard}}{{CurrencySymbol}}</span>
+
+                                <img src="{{#PhotoGiftCard}}{{UrlMedias}}/crop-700x500/{{IdMedia}}/{{FileNamePhoto}}{{/PhotoGiftCard}}{{^PhotoGiftCard}}https://static.elloha.com/webgen/img/giftcard.jpg{{/PhotoGiftCard}}" alt="{{NamePhoto}}-gift" />
+                            </div>
+
+                            <div class="infos-gift">
+                                <h3>{{ResourcesTemplate.GiftCardSolo}}</h3>
+
+                                <div class="date-from-to">
+                                    {{#DurationGiftCard}}
+                                    <div class="group-date-os">
+                                        <span class="date-os">{{ResourcesTemplate.Valid}}</span>
+                                        <span class="date-os">{{DurationGiftCard}} {{ResourcesTemplate.month}}</span>
+                                    </div>
+                                    {{/DurationGiftCard}}
+
+                                    {{^DurationGiftCard}}
+
+                                    {{#DateFromGiftCardString}}
+                                    <div class="group-date-os">
+                                        <span class="date-os">{{ResourcesTemplate.Valid}}</span>
+                                        <span class="date-os lowercase">{{ResourcesTemplate.DateFrom}}</span>
+                                        <span class="date-os">{{DateFromGiftCardString}}</span>
+                                        <span class="date-os">{{ResourcesTemplate.DateTo}}</span>
+                                        <span class="date-os">{{DateToGiftCardString}}</span>
+                                    </div>
+                                    {{/DateFromGiftCardString}}
+
+                                    {{^DateFromGiftCardString}}
+                                    <div class="group-date-os">
+                                        {{#DateToGiftCardString}}
+                                        <span class="date-os">{{ResourcesTemplate.Valid}}</span>
+                                        <span class="date-os lowercase">{{ResourcesTemplate.DateUntil}}</span>
+                                        {{/DateToGiftCardString}}
+
+                                        {{#DateToGiftCardString}}
+                                        <span class="date-os">{{DateToGiftCardString}}</span>
+                                        {{/DateToGiftCardString}}
+                                    </div>
+                                    {{/DateFromGiftCardString}}
+
+                                    {{/DurationGiftCard}}
+                                </div>
+
+                                <div class="description-option">{{DescriptionGiftCard}}</div>
+                            </div>
+                        </a>
+                        {{/GiftCards}}
+                    </div>
+                </div>
+            </div>
+            {{/HasGiftCardsActivated}}
+        </section>
+        {{/HasGiftsActivated}}
+        {{/HasBookingActivated}}
+
+        {{#HasCalendarActivated}}
+        <!-- SECTION CALENDRIER -->
+        <section id="section-calendar" class="section section-calendar">
+            <div class="content-section">
+
+                <div class="title-and-btn-dispo">
+                    <div class="title-with-sub">
+                        <span>{{ResourcesTemplate.Calendar}}</span>
+
+                        <h2>{{ResourcesTemplate.AvailabilityTitle}}</h2>
+                    </div>
+
+                    <div class="calendar_status">
+                        <div>
+                            <div class="green-dispo">-</div>
+                            <span>{{ResourcesTemplate.Available}}</span>
+                        </div>
+                        <div>
+                            <div class="red-no-dispo">-</div>
+                            <span class="not-available">{{ResourcesTemplate.NotAvailable}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calendars">
+                    <div class="avail-calendar-w">
+                        <div class="calendar-container">
+                            <div id="datepicker2"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        {{/HasCalendarActivated}}
+
+        <!-- SECTION COORD + MAP + METEO -->
+        <section class="section-coord-map-meteo">
+            <!-- SECTION COORDONNEES -->
+            <div class="section section-coord section-coord-1">
+                <div class="coord-contain">
+                    <div class="title-with-sub">
+                        <span>{{ResourcesTemplate.MapAndContact}}</span>
+
+                        <h2>{{ResourcesTemplate.ComeMeetUs}}</h2>
+                    </div>
+
+                    <div class="address-line">
+                        {{ResourcesTemplate.Address}}: <strong>{{AddressLine}}, {{PostalCode}}, {{City}}, {{Country}}</strong>
+                    </div>
+
+                    <div class="contacts-bloc">
+                        {{#HasPhoneNumberActivated}}
+                        <div class="contacts-details">
+                            <i class="las la-phone icone-contact"></i>
+
+                            <a href="tel:{{PhoneNumber}}">
+                                <span>{{PhoneNumber}}</span>
+                            </a>
+                        </div>
+                        {{/HasPhoneNumberActivated}}
+
+                        {{#HasMobilePhoneNumberActivated}}
+                        <div class="contacts-details">
+                            <i class="las la-mobile icone-contact"></i>
+
+                            <a href="tel:{{MobilePhoneNumber}}">
+                                <span>{{MobilePhoneNumber}}</span>
+                            </a>
+                        </div>
+                        {{/HasMobilePhoneNumberActivated}}
+
+                        {{#FaxNumber}}
+                        <div class="contacts-details">
+                            <i class="las la-fax icone-contact"></i>
+
+                            <div>{{FaxNumber}}</div>
+                        </div>
+                        {{/FaxNumber}}
+
+                        {{#HasWhatsappWidgetActivated}}
+                        <div class="contacts-details">
+                            <i class="lab la-whatsapp icone-contact"></i>
+
+                            <a href="{{WhatsappUrl}}">
+                                <span>WhatsApp</span>
+                            </a>
+                        </div>
+                        {{/HasWhatsappWidgetActivated}}
+
+                        <div class="contacts-details">
+                            <i class="la la-at icone-contact"></i>
+
+                            <a class="dynamic-mail-to">{{ResourcesTemplate.contactByEmail}}</a>
+                        </div>
+                    </div>
+
+                    <div class="social-medias-and-btn">
+                        {{#HasSocialNetworks}}
+                        <div class="social-medias">
+                            {{#TikTok}}<a href="{{TikTok}}" target="_blank"><i class="fab fa-tiktok"></i></a>{{/TikTok}}
+                            {{#Facebook}}<a href="{{Facebook}}" target="_blank"><i class="lab la-facebook-f"></i></a>{{/Facebook}}
+                            {{#Twitter}}<a href="{{Twitter}}" target="_blank"><i class="lab la-twitter"></i></a>{{/Twitter}}
+                            {{#Pinterest}}<a href="{{Pinterest}}" target="_blank"><i class="lab la-pinterest"></i></a>{{/Pinterest}}
+                            {{#Youtube}}<a href="{{Youtube}}" target="_blank"><i class="lab la-youtube"></i></a>{{/Youtube}}
+                            {{#Instagram}}<a href="{{Instagram}}" target="_blank"><i class="lab la-instagram"></i></a>{{/Instagram}}
+                            {{#Vimeo}}<a href="{{Vimeo}}" target="_blank"><i class="lab la-vimeo"></i></a>{{/Vimeo}}
+                            {{#Linkedin}}<a href="{{Linkedin}}" target="_blank"><i class="lab la-linkedin-in"></i></a>{{/Linkedin}}
+                        </div>
+                        {{/HasSocialNetworks}}
+
+                        <div class="btn-contain">
+                            <a data-action="external-map" class="btn">
+                                {{ResourcesTemplate.Itinerary}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION MAP -->
+            <div id="applemapkit" class="fullwidth-mapkit">
+                <div id="mapApple"></div>
+            </div>
+
+            <div class="section coord-and-meteo">
+                <div class="coord-and-meteo-contain demi-content-section-left">
+                    <!-- SECTION COORDONNEES -->
+                    <div class="section-coord section-coord-2">
+                        <div class="coord-contain">
+                            <div class="title-with-sub">
+                                <span>{{ResourcesTemplate.MapAndContact}}</span>
+
+                                <h2>{{ResourcesTemplate.ComeMeetUs}}</h2>
+                            </div>
+
+                            <div class="address-line">
+                                {{ResourcesTemplate.Address}}: <strong>{{AddressLine}}, {{PostalCode}}, {{City}}, {{Country}}</strong>
+                            </div>
+
+                            <div class="contacts-bloc">
+                                {{#HasPhoneNumberActivated}}
+                                <div class="contacts-details">
+                                    <i class="las la-phone icone-contact"></i>
+
+                                    <a href="tel:{{PhoneNumber}}">
+                                        <span>{{PhoneNumber}}</span>
+                                    </a>
+                                </div>
+                                {{/HasPhoneNumberActivated}}
+
+                                {{#HasMobilePhoneNumberActivated}}
+                                <div class="contacts-details">
+                                    <i class="las la-mobile icone-contact"></i>
+
+                                    <a href="tel:{{MobilePhoneNumber}}">
+                                        <span>{{MobilePhoneNumber}}</span>
+                                    </a>
+                                </div>
+                                {{/HasMobilePhoneNumberActivated}}
+
+                                {{#FaxNumber}}
+                                <div class="contacts-details">
+                                    <i class="las la-fax icone-contact"></i>
+
+                                    <div>{{FaxNumber}}</div>
+                                </div>
+                                {{/FaxNumber}}
+
+                                {{#HasWhatsappWidgetActivated}}
+                                <div class="contacts-details">
+                                    <i class="lab la-whatsapp icone-contact"></i>
+
+                                    <a href="{{WhatsappUrl}}">
+                                        <span>WhatsApp</span>
+                                    </a>
+                                </div>
+                                {{/HasWhatsappWidgetActivated}}
+
+                                <div class="contacts-details">
+                                    <i class="la la-at icone-contact"></i>
+
+                                    <a class="dynamic-mail-to">{{ResourcesTemplate.contactByEmail}}</a>
+                                </div>
+                            </div>
+
+                            <div class="social-medias-and-btn">
+                                {{#HasSocialNetworks}}
+                                <div class="social-medias">
+                                    {{#TikTok}}<a href="{{TikTok}}" target="_blank"><i class="fab fa-tiktok"></i></a>{{/TikTok}}
+                                    {{#Facebook}}<a href="{{Facebook}}" target="_blank"><i class="lab la-facebook-f"></i></a>{{/Facebook}}
+                                    {{#Twitter}}<a href="{{Twitter}}" target="_blank"><i class="lab la-twitter"></i></a>{{/Twitter}}
+                                    {{#Pinterest}}<a href="{{Pinterest}}" target="_blank"><i class="lab la-pinterest"></i></a>{{/Pinterest}}
+                                    {{#Youtube}}<a href="{{Youtube}}" target="_blank"><i class="lab la-youtube"></i></a>{{/Youtube}}
+                                    {{#Instagram}}<a href="{{Instagram}}" target="_blank"><i class="lab la-instagram"></i></a>{{/Instagram}}
+                                    {{#Vimeo}}<a href="{{Vimeo}}" target="_blank"><i class="lab la-vimeo"></i></a>{{/Vimeo}}
+                                    {{#Linkedin}}<a href="{{Linkedin}}" target="_blank"><i class="lab la-linkedin-in"></i></a>{{/Linkedin}}
+                                </div>
+                                {{/HasSocialNetworks}}
+
+                                <div class="btn-contain">
+                                    <a data-action="external-map" class="btn">
+                                        {{ResourcesTemplate.Itinerary}}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION METEO -->
+                    <div class="owl-carousel owl-theme slider-meteo">
+                        {{! Current conditions }}
+                        <div class="weather-item">
+                            <div class="title-infos-meteo">
+                                <div class="title-with-sub">
+                                    <span>{{ResourcesTemplate.Weather2}}</span>
+
+                                    <h2>{{ResourcesTemplate.Today}}</h2>
+                                </div>
+
+                                <div class="city-and-meteo">
+                                    <div class="city">{{City}}</div>
+
+                                    <div class="temperature-and-trad">
+                                        <canvas id="WeatherCcIcon" data="{{CurrentWeather.WeatherIcon}}" class="weather-icon"></canvas>
+
+                                        <span class="temperature" id="WeatherCcTemperature">{{CurrentWeather.WeatherTemperature}}°{{CurrentLang.TemperatureUnit}}</span>
+
+                                        <div class="weather-trad" data="{{CurrentWeather.WeatherIcon}}"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="meteo-contain">
+                                <div class="meteo-img" data-url="https://static.elloha.com/webgen/img/weather/"></div>
+                            </div>
+                        </div>
+                        {{! Day + 1 }}
+                        <div class="weather-item">
+                            <div class="title-infos-meteo">
+                                <div class="title-with-sub">
+                                    <span>{{ResourcesTemplate.Weather2}}</span>
+
+                                    <h2>{{CurrentLang.DayPlus1}}</h2>
+                                </div>
+
+                                <div class="city-and-meteo">
+                                    <div class="city">{{City}}</div>
+
+                                    <div class="temperature-and-trad">
+                                        <canvas id="WeatherCcIcon" data="{{NextDaysWeather.0.WeatherIcon}}" class="weather-icon"></canvas>
+
+                                        <span class="temperature" id="WeatherDay1Temperature">{{NextDaysWeather.0.WeatherTemperature}}°{{CurrentLang.TemperatureUnit}}</span>
+
+                                        <div class="weather-trad" data="{{NextDaysWeather.0.WeatherIcon}}"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="meteo-contain">
+                                <div class="meteo-img" data-url="https://static.elloha.com/webgen/img/weather/"></div>
+                            </div>
+                        </div>
+                        {{! Day + 2 }}
+                        <div class="weather-item">
+                            <div class="title-infos-meteo">
+                                <div class="title-with-sub">
+                                    <span>{{ResourcesTemplate.Weather2}}</span>
+
+                                    <h2>{{CurrentLang.DayPlus2}}</h2>
+                                </div>
+
+                                <div class="city-and-meteo">
+                                    <div class="city">{{City}}</div>
+
+                                    <div class="temperature-and-trad">
+                                        <canvas id="WeatherCcIcon" data="{{NextDaysWeather.1.WeatherIcon}}" class="weather-icon"></canvas>
+
+                                        <span class="temperature" id="WeatherDay2Temperature">{{NextDaysWeather.1.WeatherTemperature}}°{{CurrentLang.TemperatureUnit}}</span>
+
+                                        <div class="weather-trad" data="{{NextDaysWeather.1.WeatherIcon}}"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="meteo-contain">
+                                <div class="meteo-img" data-url="https://static.elloha.com/webgen/img/weather/"></div>
+                            </div>
+                        </div>
+                        {{! Day + 3 }}
+                        <div class="weather-item">
+                            <div class="title-infos-meteo">
+                                <div class="title-with-sub">
+                                    <span>{{ResourcesTemplate.Weather2}}</span>
+
+                                    <h2>{{CurrentLang.DayPlus3}}</h2>
+                                </div>
+
+                                <div class="city-and-meteo">
+                                    <div class="city">{{City}}</div>
+
+                                    <div class="temperature-and-trad">
+                                        <canvas id="WeatherCcIcon" data="{{NextDaysWeather.2.WeatherIcon}}" class="weather-icon"></canvas>
+
+                                        <span class="temperature" id="WeatherDay3Temperature">{{NextDaysWeather.2.WeatherTemperature}}°{{CurrentLang.TemperatureUnit}}</span>
+
+                                        <div class="weather-trad" data="{{NextDaysWeather.2.WeatherIcon}}"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="meteo-contain">
+                                <div class="meteo-img" data-url="https://static.elloha.com/webgen/img/weather/"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {{#HasInstagramActivated}}
+        <!-- SECTION INSTA -->
+        <section class="section-insta">
+            <div class="section">
+                <div class="title-with-sub">
+                    <span>Instagram</span>
+
+                    <h2>{{ResourcesTemplate.OurSocialNetworks}}</h2>
+                </div>
+
+                {{#Instagram}}
+                <div class="btn-contain btn-contain-insta">
+                    <a href="{{Instagram}}" class="btn">
+                        <i class="lab la-instagram"></i>{{ResourcesTemplate.InstaFollowUs}}
+                    </a>
+                </div>
+                {{/Instagram}}
+            </div>
+
+            <div class="topiecha-grid">
+                {{#InstagramMediasList}}
+                <a href="{{Permalink}}" target="_blank" class="IG-bloc bg-img" style="background-image: url({{ThumbnailUrl}})"></a>
+                {{/InstagramMediasList}}
+            </div>
+        </section>
+        {{/HasInstagramActivated}}
+
+        <!-- SECTION CONTACT -->
+        <section id="section-contact" class="section section-contact">
+            <div class="contact-contain content-section">
+                <div class="title-with-sub">
+                    <span>{{ResourcesTemplate.Contact}}</span>
+
+                    <h2>{{ResourcesTemplate.Message}}</h2>
+                </div>
+
+                <form class="formulaire" id="Contact-form" action="" method="GET">
+                    <div class="bloc-contact">
+
+                        <div class="form-line double-line">
+                            <div class="form-group margin-input">
+                                <label for="Email-lastname" class="d-none control-label">{{ResourcesTemplate.LastName}} *</label>
+                                <input id="Email-lastname" name="Email-lastname" type="text" placeholder="{{ResourcesTemplate.LastName}}" class="form-control" data-error="{{ResourcesTemplate.LastNameError}}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Email-firstname" class="d-none">{{ResourcesTemplate.FirstName}} *</label>
+                                <input id="Email-firstname" name="Email-firstname" type="text" placeholder="{{ResourcesTemplate.FirstName}}" class="form-control" data-error="{{ResourcesTemplate.FirstNameError}}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-line double-line">
+                            <div class="form-group margin-input">
+                                <label for="Email-email" class="d-none">{{ResourcesTemplate.Email}} *</label>
+                                <input id="Email-email" name="Email-email" type="email" placeholder="{{ResourcesTemplate.Email}}" class="form-control" data-error="{{ResourcesTemplate.EmailError}}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Email-phone" class="d-none">{{ResourcesTemplate.Phone}} *</label>
+                                <input id="Email-phone" name="Email-phone" type="tel" placeholder="{{ResourcesTemplate.Phone}}" class="form-control" data-error="{{ResourcesTemplate.PhoneError}}" oninput="formatPhoneNumber(this)" required>
+                            </div>
+                        </div>
+
+                        <div clss="form-line">
+                            <div class="form-group form-group-textarea">
+                                <textarea id="Email-message" name="Email-message" rows="10" class="form-control" placeholder="{{ResourcesTemplate.Message}}" data-error="{{ResourcesTemplate.MessageError}}" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{>Captcha}}
+                </form>
+            </div>
+        </section>
+    </main>
+
+    {{>Footer}}
+    {{>CommonScripts}}
+    {{>Cookies}}
+
+</body>
+
+</html>

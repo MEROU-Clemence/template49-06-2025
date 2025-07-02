@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="{{CurrentLang.IsoLang}}" culture="{{CurrentLang.CultureLang}}">
+<head>
+    <title>{{ResourcesTemplate.Around}} - {{CustomTitle}} - {{City}} - {{Country}}</title>
+    <meta name="description" content="{{SubtitleAround}}">
+    {{>CommonMetaTags}}
+    <link rel="canonical" href="{{UrlAround}}" />
+    <meta property="og:url" content="{{UrlAround}}" />
+    <meta property="og:title" content="{{ResourcesTemplate.Around}}" />
+    <meta property="og:image" content="{{#Photos.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}" />
+    <meta property="og:description" content="{{SubtitleAround}}" />
+    {{>FaviconTags}}
+    {{>CommonStylesheets}}
+</head>
+<body>
+    {{{ScriptAnalytics}}}
+    {{{GoogleTagManagerBody}}}
+
+    {{>Header}}
+
+    <main>
+        <!-- SECTION BANNER -->
+        <section class="section-title-BG bg-img" style="background-image: url({{#Photos.0}}{{UrlMedias}}/crop-2200x600/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}})" alt="{{NamePhoto}}-bg-legal-mentions">
+            <div class="section opacity">
+
+                <div class="big-title-contain content-section">
+                    <span>{{ResourcesTemplate.DiscoverSurroundingArea}}</span>
+
+                    <h1 class="big-title">{{CustomTitle}}</h1>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION AROUND -->
+        <section class="section-around">
+            <div class="title-with-sub">
+                <span class="content-section">{{ResourcesTemplate.Surroundings}}</span>
+
+                <h2 class="content-section">{{ResourcesTemplate.pageMenuTitle_around}}</h2>
+            </div>
+
+            <div class="around-items-w around-big-contain">
+                {{#OisAssocied}}
+                <div class="grid-item around-contain" data-id-type="{{IdTypeOiAssocied}}" data-type-label="{{TypeOiAssocied}}" data-lat="{{XOiAssocied}}" data-lng="{{YOiAssocied}}">
+                    <div class="img-and-type-contain">
+                        <div class="around-type-contain">
+                            <span class="around-item-type">{{TypeOiAssocied}}</span>
+                        </div>
+
+                        {{#PhotoOiAssocied}}
+                        <img class="bg-img" src="{{UrlMedias}}/crop-550x350/{{IdMedia}}/{{FileNamePhoto}}" alt="{{NamePhoto}}-img-around" />
+                        {{/PhotoOiAssocied}}
+                    </div>
+
+                    <div class="infos-around">
+                        <h3 data-name>{{TitleOiAssocied}}</h3>
+
+                        {{#DistanceOiAssocied}}
+                        <div class="around-distance">
+                            <i class="las la-map-marker"></i>{{ResourcesTemplate.At}} {{DistanceOiAssocied}} {{ResourcesTemplate.Km}} {{ResourcesTemplate.FromOurPlace}}
+                        </div>
+                        {{/DistanceOiAssocied}}
+
+                        <div class="around-item-content-w">
+                            <div class="text-description">{{DescriptionOiAssocied}}</div>
+
+                            <div class="link-to-see see-all">{{ResourcesTemplate.ReadMore2}}</div>
+                            <div class="link-to-see see-menos hidden">{{ResourcesTemplate.ReadLess2}}</div>
+                        </div>
+                    </div>
+
+                    <div class="btn-around {{^TextOpinion}}no-opinion{{/TextOpinion}}">
+                        <div class="comment-item-w">
+                            <div class="icon-to-see icon-all btn">{{ResourcesTemplate.WhyWeRecommand}}</div>
+                            <div class="icon-to-see icon-menos hidden btn">{{ResourcesTemplate.WhyWeRecommand}}</div>
+                            <div class="text-opinion d-none">{{TextOpinion}}</div>
+                        </div>
+                    </div>
+                </div>
+                {{/OisAssocied}}
+            </div>
+        </section>
+
+        <!-- SECTION COORD + MAP -->
+        <section class="section-coord-map-meteo section-coord-map-meteo-in-around">
+            <!-- SECTION COORDONNEES -->
+            <div class="section section-coord section-coord-1">
+                <div class="demi-content-section-left">
+                    <div class="coord-contain">
+                        <div class="title-with-sub">
+                            <span>{{ResourcesTemplate.MapAndContact}}</span>
+
+                            <h2>{{ResourcesTemplate.ComeMeetUs}}</h2>
+                        </div>
+
+                        <div class="address-line">
+                            {{ResourcesTemplate.Address}}: <strong>{{AddressLine}}, {{PostalCode}}, {{City}}, {{Country}}</strong>
+                        </div>
+
+                        <div class="contacts-bloc">
+                            {{#HasPhoneNumberActivated}}
+                            <div class="contacts-details">
+                                <i class="las la-phone icone-contact"></i>
+
+                                <a href="tel:{{PhoneNumber}}">
+                                    <span>{{PhoneNumber}}</span>
+                                </a>
+                            </div>
+                            {{/HasPhoneNumberActivated}}
+
+                            {{#HasMobilePhoneNumberActivated}}
+                            <div class="contacts-details">
+                                <i class="las la-mobile icone-contact"></i>
+
+                                <a href="tel:{{MobilePhoneNumber}}">
+                                    <span>{{MobilePhoneNumber}}</span>
+                                </a>
+                            </div>
+                            {{/HasMobilePhoneNumberActivated}}
+
+                            {{#FaxNumber}}
+                            <div class="contacts-details">
+                                <i class="las la-fax icone-contact"></i>
+
+                                <div>{{FaxNumber}}</div>
+                            </div>
+                            {{/FaxNumber}}
+
+                            {{#HasWhatsappWidgetActivated}}
+                            <div class="contacts-details">
+                                <i class="lab la-whatsapp icone-contact"></i>
+
+                                <a href="{{WhatsappUrl}}">
+                                    <span>WhatsApp</span>
+                                </a>
+                            </div>
+                            {{/HasWhatsappWidgetActivated}}
+
+                            <div class="contacts-details">
+                                <i class="la la-at icone-contact"></i>
+
+                                <a class="dynamic-mail-to">{{ResourcesTemplate.contactByEmail}}</a>
+                            </div>
+                        </div>
+
+                        <div class="social-medias-and-btn">
+                            {{#HasSocialNetworks}}
+                            <div class="social-medias">
+                                {{#TikTok}}<a href="{{TikTok}}" target="_blank"><i class="fab fa-tiktok"></i></a>{{/TikTok}}
+                                {{#Facebook}}<a href="{{Facebook}}" target="_blank"><i class="lab la-facebook-f"></i></a>{{/Facebook}}
+                                {{#Twitter}}<a href="{{Twitter}}" target="_blank"><i class="lab la-twitter"></i></a>{{/Twitter}}
+                                {{#Pinterest}}<a href="{{Pinterest}}" target="_blank"><i class="lab la-pinterest"></i></a>{{/Pinterest}}
+                                {{#Youtube}}<a href="{{Youtube}}" target="_blank"><i class="lab la-youtube"></i></a>{{/Youtube}}
+                                {{#Instagram}}<a href="{{Instagram}}" target="_blank"><i class="lab la-instagram"></i></a>{{/Instagram}}
+                                {{#Vimeo}}<a href="{{Vimeo}}" target="_blank"><i class="lab la-vimeo"></i></a>{{/Vimeo}}
+                                {{#Linkedin}}<a href="{{Linkedin}}" target="_blank"><i class="lab la-linkedin-in"></i></a>{{/Linkedin}}
+                            </div>
+                            {{/HasSocialNetworks}}
+
+                            <div class="btn-contain">
+                                <a data-action="external-map" class="btn">
+                                    {{ResourcesTemplate.Itinerary}}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION MAP -->
+            <div id="applemapkit" class="fullwidth-mapkit" data-lat="{{X}}" data-lng="{{Y}}" data-string="{{CustomTitle}}, {{AddressLine}}, {{PostalCode}}, {{City}}, {{Country}}.">
+                <div id="mapApple"></div>
+            </div>
+        </section>
+    </main>
+
+    {{>Footer}}
+    {{>CommonScripts}}
+    
+</body>
+</html>
